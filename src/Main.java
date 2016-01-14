@@ -38,6 +38,7 @@ public class Main {
 		for (int i = 0; i < sizeList.size(); i++) {
 			if (sizeList.get(i) == Collections.max(sizeList)) {
 				maxIndex = i;
+				break;
 			}
 		}
 		System.out.println("Longest word is: " + wordList.get(maxIndex));

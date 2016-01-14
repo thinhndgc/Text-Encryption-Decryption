@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -10,6 +13,36 @@ public class Main {
 		System.out.println(encryption(text));
 		System.out.println("Text decrypted:");
 		System.out.println(dencryption(encryption(text)));
+		findLongestWord(text);
+	}
+	
+	public static void findLongestWord(String word){
+		String temp = "";
+		int maxIndex = 0;
+		List<Integer> sizeList = new ArrayList<>();
+		List<String> wordList = new ArrayList<>();
+		for (int i = 0; i < word.length(); i++) {
+			if (word.charAt(i) == ' ') {
+				wordList.add(temp);
+				temp = "";
+			}else {
+				temp = temp.concat(Character.toString(word.charAt(i)));
+			}
+			if (i == -1 + word.length()) {
+				wordList.add(temp);
+			}
+		}
+		for (int i = 0; i < wordList.size(); i++) {
+			sizeList.add(wordList.get(i).length());
+		}
+		for (int i = 0; i < sizeList.size(); i++) {
+			if (sizeList.get(i) == Collections.max(sizeList)) {
+				maxIndex = i;
+			}
+		}
+		System.out.println("Longest word is: " + wordList.get(maxIndex));
+		maxIndex++;
+		System.out.println("This is word " + maxIndex + " in text");
 	}
 	
 	public static String encryption(String text){
